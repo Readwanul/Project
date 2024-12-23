@@ -10,9 +10,9 @@ export class TransectionService {
         private transectionrepo: Repository<Transaction>) {}
         
         
-  dbAdd(data)
-  {
-   return this.transectionrepo.save(data)
+  dbAdd(data: any) {
+    data.platformCharge = data.totalAmount * 0.05; 
+    return this.transectionrepo.save(data);
   }
 
   getall() 

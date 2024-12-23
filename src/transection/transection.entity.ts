@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn } from 'typeorm';
+import { HouseOwner } from 'src/houseowner/houseowner.entity'; 
 
 export enum TransactionStatus {
   PENDING = 'Pending',
@@ -12,8 +13,9 @@ export class Transaction {
   @PrimaryGeneratedColumn()
   tid: number;
 
-  @Column()
-  transactionTo: number;
+  @OneToOne(() => HouseOwner) // Define the one-to-one relationship
+  @JoinColumn() // Specify the owning side of the relationship
+  transactionTo: HouseOwner;
 
   @Column('decimal')
   totalAmount: number;

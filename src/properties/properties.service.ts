@@ -9,11 +9,6 @@ export class PropertiesService {
         constructor(@InjectRepository(Properties)
         private Propertiesrepo: Repository<Properties>) {}
 
-    
-    dbAdd(data)
-    {
-        return this.Propertiesrepo.save(data)
-    } 
 
     getall() 
     {
